@@ -9,13 +9,6 @@
 #include <nvs_flash.h>
 #include "app_priv.h"
 
-/*Make changes to the following functions when using this program
-
-->app_gpio_init()
-->set_power_state()
-
- */
-
 #define BUTTON_ACTIVE_LEVEL 0
 #define RELAY_ACTIVE_LEVEL 0
 #define NUM_OF_SWITCHES 4
@@ -138,8 +131,7 @@ static void btn_release(void *arg) {
 static void set_power_state(int switch_num, bool state) {
     if(RELAY_ACTIVE_LEVEL  == 1){
         gpio_set_level(relay_gpio[switch_num], state);    
-    }
-    else{
+    }else{
         gpio_set_level(relay_gpio[switch_num], !state);
     }
 }
@@ -185,11 +177,12 @@ void app_gpio_init() {
         }
 
     }
+    /**/
     gpio_config_t io_conf = {
             .mode = GPIO_MODE_INPUT_OUTPUT,
             .pull_down_en = 1,
         };
-        io_conf.pin_bit_mask = ((uint64_t)1 << 2);
+        io_conf.pin_bit_mask = ((uint64_t)1 << CONFIG_WIFI_LED);
         gpio_config(&io_conf);
 }
 
