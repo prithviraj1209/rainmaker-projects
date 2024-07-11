@@ -3,7 +3,7 @@
 # project subdirectory.
 #
 
-PROJECT_NAME := master_bedroom
+PROJECT_NAME := PROJECT_NAME
 PROJECT_VER := 1.0
 
 # Add RainMaker components and other common application components
