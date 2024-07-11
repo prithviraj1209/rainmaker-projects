@@ -1,0 +1,44 @@
+menu "Relay & Button Configuration"
+
+    config BOOT_BUTTON
+        int "Boot Button"
+        default 0
+
+    config WIFI_LED
+        int "Wifi Led"
+        default 2
+
+    config BUTTON_GPIO_0
+        int "Button to switch Relay_0"
+        default 13
+
+    config BUTTON_GPIO_1
+        int "Button to switch Relay_1"
+        default 12
+
+    config BUTTON_GPIO_2
+        int "Button to switch Relay_2"
+        default 14
+
+    config BUTTON_GPIO_3
+        int "Button to switch Relay_3"
+        default 27
+
+
+    config RELAY_GPIO_0
+        int "Output relay for button_0"
+        default 23
+
+    config RELAY_GPIO_1
+        int "Output relay for button_1"
+        default 22
+
+    config RELAY_GPIO_2
+        int "Output relay for button_2"
+        default 21
+
+    config RELAY_GPIO_3
+        int "Output relay for button_3"
+        default 19
+
+endmenu
