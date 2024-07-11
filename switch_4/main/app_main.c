@@ -203,7 +203,7 @@ void app_main(){
         vTaskDelay(5000 / portTICK_PERIOD_MS);
         abort();
     }
-    /*Creating the adding SWITCH DEVICES to the node*/
+    /*Creating and adding SWITCH DEVICES to the node*/
     for (int i = 0; i < NUM_OF_SWITCHES; i++) {
         char device_name[10];
         snprintf(device_name, sizeof(device_name), "Switch_%d", i);
