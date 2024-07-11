@@ -4,8 +4,8 @@ Clone this repository into the esp-rainmaker/examples folder
 
 ## Before building and flashing 
 
--Note whether your relays are active-low or active-high and update that in the app_driver.c file accordingly.
--Change the Relay and Button GPIOs set in the Kconfig.projbuild file according to your need.
+Note whether your relays are active-low or active-high and update that in the app_driver.c file accordingly.
+Change the Relay and Button GPIOs set in the Kconfig.projbuild file according to your need.
 
 ## Build and Flash firmware
 
@@ -13,9 +13,9 @@ Follow the ESP RainMaker Documentation [Get Started](https://rainmaker.espressif
 
 ## What to expect from this program.?
 
--Once the board is wifi provisioned, you can control the devices via the RainMaker mobile application along with the physical buttons.
--Additionally you can also control the devices from the mobile application even if the wifi has no internet access(Note: The mobile device and the esp device must be connected to the same wifi.).
--You will receive various updates about the devices on your serial monitor.
+Once the board is wifi provisioned, you can control the devices via the RainMaker mobile application along with the physical buttons.
+Additionally you can also control the devices from the mobile application even if the wifi has no internet access(Note: The mobile device and the esp device must be connected to the same wifi.).
+You will receive various updates about the devices on your serial monitor.
 
 ### Reset wifi
 
