@@ -196,8 +196,8 @@ void app_main(){
     esp_rmaker_config_t rainmaker_cfg = {
         .enable_time_sync = false,
     };
-    //CHANGE "MASTER BEDROOM" ACCORDING TO YOUR NEED.
-    esp_rmaker_node_t *node = esp_rmaker_node_init(&rainmaker_cfg, "Master Bedroom", "switch");     
+    //CHANGE "NODE NAME" ACCORDING TO YOUR NEED.
+    esp_rmaker_node_t *node = esp_rmaker_node_init(&rainmaker_cfg, "NODE NAME", "switch");     
     if (!node) {
         ESP_LOGE(TAG, "Could not initialise node. Aborting!!!");
         vTaskDelay(5000 / portTICK_PERIOD_MS);

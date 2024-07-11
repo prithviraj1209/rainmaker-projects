@@ -17,6 +17,7 @@
  */
 
 #define BUTTON_ACTIVE_LEVEL 0
+#define RELAY_ACTIVE_LEVEL 0
 #define NUM_OF_SWITCHES 4
 
 int8_t g_relay_state[NUM_OF_SWITCHES] = {false, false, false, false};
@@ -135,39 +136,61 @@ static void btn_release(void *arg) {
 }
 
 static void set_power_state(int switch_num, bool state) {
-    //REMOVE THE "!" BEFORE STATE IF YOUR RELAYS ARE ACTIVE HIGH
-    gpio_set_level(relay_gpio[switch_num], !state);    
+    if(RELAY_ACTIVE_LEVEL  == 1){
+        gpio_set_level(relay_gpio[switch_num], state);    
+    }
+    else{
+        gpio_set_level(relay_gpio[switch_num], !state);
+    }
 }
 
 void app_gpio_init() {
-    for (int i = 0; i < NUM_OF_SWITCHES; i++) {
-        gpio_config_t io_conf = {
-            .mode = GPIO_MODE_INPUT_OUTPUT,
-            // .pull_down_en = 1,
-            /*uncomment the above line if your relays are active high*/ 
-            /*uncomment the below line if your relays are active low */
-            .pull_up_en = 1,                            
-        };
-        io_conf.pin_bit_mask = ((uint64_t)1 << relay_gpio[i]);
-        gpio_config(&io_conf);
+    if(RELAY_ACTIVE_LEVEL == 0){
+        for (int i = 0; i < NUM_OF_SWITCHES; i++) {
+            // Configure relay_gpio
+            gpio_config_t relay_conf = {
+                .mode = GPIO_MODE_INPUT_OUTPUT,
+                .pull_up_en = 1,
+                .pin_bit_mask = ((uint64_t)1 << relay_gpio[i])
+            };
+            gpio_config(&relay_conf);
+            
+            // Configure button_gpio
+            gpio_config_t button_conf = {
+                .mode = GPIO_MODE_INPUT_OUTPUT,
+                .pull_up_en = 1,
+                .pin_bit_mask = ((uint64_t)1 << button_gpio[i])
+            };
+            gpio_config(&button_conf);
+            gpio_set_level(button_gpio[i], true);
+        }
+    }else{
+        for (int i = 0; i < NUM_OF_SWITCHES; i++) {
+            // Configure relay_gpio with pull-down enabled
+            gpio_config_t relay_conf = {
+                .mode = GPIO_MODE_INPUT_OUTPUT,
+                .pull_down_en = 1,
+                .pin_bit_mask = ((uint64_t)1 << relay_gpio[i])
+            };
+            gpio_config(&relay_conf);
+            
+            // Configure button_gpio with pull-up enabled
+            gpio_config_t button_conf = {
+                .mode = GPIO_MODE_INPUT_OUTPUT,
+                .pull_up_en = 1,
+                .pin_bit_mask = ((uint64_t)1 << button_gpio[i])
+            };
+            gpio_config(&button_conf);
+            gpio_set_level(button_gpio[i], true);
+        }
+
     }
-    gpio_config_t io_conf_2 = {
+    gpio_config_t io_conf = {
             .mode = GPIO_MODE_INPUT_OUTPUT,
             .pull_down_en = 1,
         };
-        io_conf_2.pin_bit_mask = ((uint64_t)1 << 2);
-        gpio_config(&io_conf_2);
-
-    for (int i = 0; i < NUM_OF_SWITCHES; i++) {
-        gpio_config_t io_conf = {
-            .mode = GPIO_MODE_INPUT_OUTPUT,
-            .pull_up_en = 1,
-        };
-        io_conf.pin_bit_mask = ((uint64_t)1 << button_gpio[i]);
+        io_conf.pin_bit_mask = ((uint64_t)1 << 2);
         gpio_config(&io_conf);
-        gpio_set_level(button_gpio[i], true);
-    }
-    
 }
 
 void app_driver_init() {
