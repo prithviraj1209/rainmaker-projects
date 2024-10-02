@@ -23,7 +23,7 @@ You will receive various updates about the devices on your serial monitor.
 
 ### What is different in this project?
 
-+ Not make using Arduino IDE.
++ Not made using Arduino IDE.
 + Device state is recovered after a power cut(NVS).
 + Can control using ESP Rainmaker mobile application even without internet access.
 
