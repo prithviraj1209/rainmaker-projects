@@ -231,5 +231,4 @@ void app_main(){
         vTaskDelay(5000 / portTICK_PERIOD_MS);
         abort();
     }
-
 }
