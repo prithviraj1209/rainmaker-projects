@@ -24,7 +24,7 @@ You will receive various updates about the devices on your serial monitor.
 ### What is different in this project?
 
 + Not made using Arduino IDE.
-+ Device state is recovered after a power cut(NVS).
++ Switch state is recovered after reboot (NVS).
 + Can control using ESP Rainmaker mobile application even without internet access.
 
 ### Reset wifi
