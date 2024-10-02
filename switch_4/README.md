@@ -11,7 +11,7 @@ Change the Relay and Button GPIOs set in the Kconfig.projbuild file according to
 
 Follow the ESP RainMaker Documentation [Get Started](https://rainmaker.espressif.com/docs/get-started.html) section to build and flash this firmware. Just note the path of this example.
 
-## What to expect from this program.?
+## What to expect from this program?
 
 Once the board is wifi provisioned, you can control the devices via
 + RainMaker mobile application when connected to the internet.
@@ -20,6 +20,12 @@ Once the board is wifi provisioned, you can control the devices via
   (Note: The mobile device and the esp device must be connected to the same wifi.)
 
 You will receive various updates about the devices on your serial monitor.
+
+### What is different in this project?
+
++ Not make using Arduino IDE.
++ Device state is recovered after a power cut(NVS).
++ Can control using ESP Rainmaker mobile application even without internet access.
 
 ### Reset wifi
 
