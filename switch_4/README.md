@@ -13,8 +13,12 @@ Follow the ESP RainMaker Documentation [Get Started](https://rainmaker.espressif
 
 ## What to expect from this program.?
 
-Once the board is wifi provisioned, you can control the devices via the RainMaker mobile application along with the physical buttons.
-Additionally you can also control the devices from the mobile application even if the wifi has no internet access(Note: The mobile device and the esp device must be connected to the same wifi.).
+Once the board is wifi provisioned, you can control the devices via
++ RainMaker mobile application when connected to the internet.
++ Physical buttons.
++ Additionally you can also control the devices from the mobile application even if the wifi has no internet access.
+  (Note: The mobile device and the esp device must be connected to the same wifi.)
+
 You will receive various updates about the devices on your serial monitor.
 
 ### Reset wifi
